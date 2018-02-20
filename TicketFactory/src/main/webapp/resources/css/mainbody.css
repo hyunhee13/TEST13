@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+
+/* 폰트 영역 */
+.main13bold { font-size:13px; color:#666; font-weight:600; }
+.price14bold { color:#ee5b96; font-weight:600; font-family:맑은 고딕; font-size:14px;}
+.price13 { color:#ed3d84; font-family:tahoma; font-weight:400; font-size:13px; font-family: 맑은 고딕;}
+.won12 { font-size:12px; font-weight:400; }
+
+
+/* 마우스 오버 효과 */
+a.underline:link,a.underline:visited,a.underline:active { text-decoration:none; } 
+a.underline:hover { text-decoration:underline;} 
+
+
+
+/* 웹 메인 페이지 */
+.main_wrap {width:980px; margin:auto;}
+
+.main_wbg_area {background:#fff; padding-top: 20px;}
+.main_bg_area30 {padding:30px 0; background:#eee;}
+.main_bg_area60 {padding:60px 0; background:#eee;}
+.main_title{ margin-bottom:20px;}
+.btn_more { margin:0 0 21px 10px; }
+
+.main_topline {padding-top:25px; border-top: 1px solid #dbdbdb;}
+
+
+.main_bnr_rolling {width:677px; height:351x; float:left; border:1px solid #dedede; border-right:0;  line-height:0%;}
+.main_bnr_r1{width:300px; height:175px; border:1px solid #dedede; }
+.main_bnr_r2{width:300px; height:175px; border:1px solid #dedede; border-top:0;}
+
+/*메인 - 오늘내일, 공연 */
+.main_day_wrap { margin:0 8px 15px 2px; width:185px; height:250px; border:1px solid #dbdbdb; }
+.main_rows_02_bottom{width:140px; margin-bottom:30px;}
+.main_rows_02_title{width:140px; text-align:left ;padding:2px 0 3px 0px; font-size:13px; color:#666;}
+
+.ellip{word-break:break-all;text-overflow-mode:ellipsis-word;text-overflow-mode:ellipsis;text-overflow-mode:clip;text-overflow:ellipsis;overflow:hidden; white-space:nowrap;}
+
+
+.color_p{ color:#ed3d84 }
+.red{ color:red; }
+.blue{ color:blue; }
+
+.txt_red {color:red;}
+.txt_blue {color:#000098;}

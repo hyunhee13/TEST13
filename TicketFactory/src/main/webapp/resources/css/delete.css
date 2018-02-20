@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+
+
+/* delete session부분 */
+#delete_session{
+	width: 980px; height: 700px;   
+	margin: 50px auto; background-color: white;
+	text-align: center;
+}
+
+#delete_session_1{
+	
+	padding: 50px 20px;
+	
+	text-align: left;
+}
+
+#delete_session_2{
+	padding-top: 10px;
+}
+
+#delete_session_3{
+	padding: 30px 20px;
+}
+
+#delete_session_4{
+	
+	padding: 10px 200px;
+	text-align: center;
+}
+#delete_session_5{
+	padding-top:10px;
+	padding-left : 350px;
+	padding-right:350px;
+	
+}
+#delete_session_6{
+	padding-top:0px;
+	padding-left : 350px;
+	padding-right:350px;
+	text-align: center;
+}
+
+#delete_info > tr > td:first-child{
+	height: 30px;
+}
+
+#delete_info > tr > td:last-child{
+	height: 30px;
+}
+

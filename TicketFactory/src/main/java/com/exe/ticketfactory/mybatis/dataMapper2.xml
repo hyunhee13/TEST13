@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dataMapper2">
+
+<select id="selectShowAll" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice,
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo 
+	from show
+</select>
+
+<select id="selectShowShowId" parameterType="String" resultType="String">
+	select showId from show where showId=#{showId}
+</select>
+
+<select id="selectShowOne" parameterType="String" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice,
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo 
+	from show where showId=#{showId}
+</select>
+
+<select id="selectPlaceAll" resultType="com.exe.ticketfactory.dto.PlaceDTO">
+	select placeId, placeName, placeOpen, placeSeat, placeTel, placeUrl, placeAddr,
+	placeLa, placeLo, placeChar from place
+</select>
+
+<select id="selectPlaceSeat" parameterType="String" resultType="int">
+	select placeSeat from place where placeId=#{placeId}
+</select>
+
+<select id="selectPlaceOne" parameterType="String" resultType="com.exe.ticketfactory.dto.PlaceDTO">
+	select placeId, placeName, placeOpen, placeSeat, placeTel, placeUrl, placeAddr,
+	placeLa, placeLo, placeChar from place where placeId=#{placeId}
+</select>
+
+<select id="selectImageAll" resultType="com.exe.ticketfactory.dto.ImageDTO">
+	select showId, imageLink from showImage
+</select>
+
+<select id="selectTimeAll" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showId, showTime, showDay, seat, showDate from timetable
+</select>
+
+<select id="selectTimeOne" parameterType="String" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showId, showTime, showDay, seat, showDate from timetable where showId=#{showId}
+</select>
+
+<select id="selectTimeByDay" parameterType="Map" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showTime from timetable where showId=#{showId} and showDay=#{showDay}
+</select>
+
+<select id="selectDayDist" parameterType="String" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select distinct showDay from timetable where showId=#{showId}
+</select>
+
+<select id="selectImageOne" parameterType="String" resultType="com.exe.ticketfactory.dto.ImageDTO">
+	select showId, imageLink from showImage where showId=#{showId}
+</select>
+
+<select id="selectTimeByDate" parameterType="Map" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showTime,seat from timetable where showId=#{showId} and showDate=#{showDate}
+</select>
+
+<select id="selectDistDate" parameterType="String" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select distinct showDate, showDay from timetable where showId=#{showId} order by showDate
+</select>
+
+<!-- ////////////////////////////////////////REVIEW//////////////////////////////////////////////////// -->
+<!-- ////////////////////////////////////////REVIEW//////////////////////////////////////////////////// -->
+ 	<select id="maxNum" resultType="int">
+		select nvl(max(num),0) from review
+	</select>
+	
+	<insert id="insertData" parameterType="com.exe.ticketfactory.dto.ReviewDTO">
+	insert into review (userId,showId,num,name,star,content,created) values (#{userId},#{showId},#{num},#{name},#{star},#{content},sysdate)
+	</insert>
+	
+	<select id="getDataCount" parameterType="hashMap" 
+	resultType="int">
+		select nvl(count(*),0) from review
+		where ${searchKey} like '%' || #{searchValue} || '%'
+	</select>
+	
+ 	<select id="getLists_d" resultType="com.exe.ticketfactory.dto.ReviewDTO" parameterType="String">
+		select userId,num,name,star,content,to_char(created,'YYYY-MM-DD') created from review
+		where showId=#{showId} order by num desc
+	</select>
+
+	<select id="getReadData" parameterType="int" 
+	resultType="com.exe.ticketfactory.dto.ReviewDTO">
+		select userId,num,name,star,content,created from review where num=#{num}
+	</select>
+	
+	<select id="getReadDataByUserId" parameterType="hashMap" 
+	resultType="com.exe.ticketfactory.dto.BookDTO">
+		select  userId,showId,bookDate,showDay,showTime,bookState from book where userId=#{userId} and showId=#{showId}
+	</select>
+	
+	
+	<update id="updateData" parameterType="com.exe.ticketfactory.dto.ReviewDTO">
+		update review set name=#{name},star=#{star},content=#{content} where num=#{num}
+	</update>
+	
+	<delete id="deleteData" parameterType="int">
+		delete review where num=#{num}
+	</delete>
+	
+	<select id="avgStar" >
+	select round(avg(star)) from review
+	</select>
+
+
+
+<!-- ////////////////////////////////////////qna//////////////////////////////////////////////////// -->
+<!-- ////////////////////////////////////////qna//////////////////////////////////////////////////// -->
+<!-- ////////////////////////////////////////qna//////////////////////////////////////////////////// -->
+
+
+<!-- boardNum 최대값 구하기 -->
+<select id='maxBoardNumQna' resultType="int">
+	select nvl(max(BoardNum),0) from qna
+</select>
+
+<!-- insert -->
+<insert id="insertDataQna" parameterType="com.exe.ticketfactory.dto.QnaDTO">
+	insert into qna (userId,showId,boardNum,content,groupNum,depth,orderNo,parent,created) values(
+	#{userId},#{showId},#{boardNum},#{content},#{groupNum},#{depth},#{orderNo},#{parent},sysdate)
+</insert>
+
+<!-- 전체 데이터 개수 -->
+<select id="dataCountQna" resultType="int">
+	select nvl(count(*),0) from qna
+	where ${searchKey} like '%' || #{searchValue} || '%'
+</select>
+
+<!-- 리스트 출력 -->
+<select id="listDataQna" resultType="com.exe.ticketfactory.dto.QnaDTO" parameterType="String">
+	select userId,boardNum,content,depth,to_char(created,'YYYY-MM-DD') created from qna
+		where showId=#{showId} order by groupNum desc, orderNo asc
+</select>
+
+<!-- 답변일 경우 순서 변경 -->
+<update id="orderNoUpdateQna" parameterType="map">
+	update qna set orderNo=#{orderNo} + 1
+	where groupNum=#{groupNum} and orderNo>#{orderNo}
+</update>	
+
+<!-- 수정 -->
+<update id="updateDataQna" parameterType="com.exe.ticketfactory.dto.QnaDTO">
+	update qna set userId=#{userId},content=#{content} where boardNum=#{boardNum} 
+</update>
+
+<!-- 삭제 -->
+<delete id="deleteDataQna" parameterType="int">
+	delete qna where boardNum in
+	(select boardNum from qna start with boardNum=#{boardNum}
+	connect by prior boardNum=parent)
+</delete>
+
+
+<select id="getListsReview" parameterType="hashMap" resultType="com.exe.ticketfactory.board.dto.ShowReviewDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select show.showId,userId,num,name,star,content,showName,showPlace,showPoster,to_char(created,'YYYY-MM-DD') created 
+	from review,show where ${searchKey} like '%' || #{searchValue} || '%' and show.showId = review.showId
+	order by num desc) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<select id="getReviewAvg" parameterType="map" resultType="com.exe.ticketfactory.board.dto.ShowReviewDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select showId, showName, showPlace, showPoster
+	from show where showId in (select distinct showId from review) order by showId) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>	
+</select>
+
+<select id="getReviewCount" resultType="String">
+	select distinct showId from review
+</select>
+
+<select id="getStarAvg" parameterType="String" resultType="int">
+	select round(avg(star)) from review where showId=#{showId}
+</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

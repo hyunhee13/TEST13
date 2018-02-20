@@ -1,0 +1,356 @@
+
+@CHARSET "UTF-8";
+
+.group {
+width: 1300px;
+height: 800px;    
+
+}
+.box-1 {
+    width: 800px;
+    height: 800px;
+    float: left;
+    background-color: white;
+    text-align: center;
+    float: left; 
+}
+.box-2 {
+    width: 500px;
+    height: 150px;
+    float: left;
+    background-color: blue;
+    text-align: center;
+  
+}
+
+.box-3 {
+    width: 500px;
+    height: 150px;
+    float: left;
+    background-color: red;
+    text-align: center;
+}
+
+.item_view {
+    background: #fff;
+    width: 1070px;
+    border: 1px solid #d7d7d7;
+    overflow: hidden;
+    margin: auto;
+}
+
+.discount {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: -4px 16px 0 0;
+    width: 111px;
+    height: 90px;
+    background: url(../images/view_discount.png) 0 0 no-repeat;
+    z-index: 500;
+    text-align: center;
+}
+
+.photo_box {
+    float: left;
+    overflow: hidden;
+    width: 550px;
+    position: relative;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.large {
+    width: 450px;
+    height: 500px;
+    overflow: auto;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+    border-style: solid;
+	border-width: 60px 50px 69px 50px;
+	-moz-border-image: url(https://s-media-cache-ak0.pinimg.com/736x/74/6f/dd/746fdd04b09e2abe41bb03c21218071f.jpg) 90 104 99 95;
+	-webkit-border-image: url(https://s-media-cache-ak0.pinimg.com/736x/74/6f/dd/746fdd04b09e2abe41bb03c21218071f.jpg) 90 104 99 95;
+	-o-border-image: url(https://s-media-cache-ak0.pinimg.com/736x/74/6f/dd/746fdd04b09e2abe41bb03c21218071f.jpg) 90 104 99 95;
+	border-image: url(https://s-media-cache-ak0.pinimg.com/736x/74/6f/dd/746fdd04b09e2abe41bb03c21218071f.jpg) 90 104 99 95;
+    
+    
+/* 	border-style: solid;
+	border-width: 60px 50px 69px 50px;
+	-moz-border-image: url(https://s-media-cache-ak0.pinimg.com/736x/10/30/5a/10305af1aeaa0ae5c1ccedb4c36aa33e.jpg) 90 104 99 95;
+	-webkit-border-image: url(https://s-media-cache-ak0.pinimg.com/736x/10/30/5a/10305af1aeaa0ae5c1ccedb4c36aa33e.jpg) 90 104 99 95;
+	-o-border-image: url(https://s-media-cache-ak0.pinimg.com/736x/10/30/5a/10305af1aeaa0ae5c1ccedb4c36aa33e.jpg) 90 104 99 95;
+	border-image: url(https://s-media-cache-ak0.pinimg.com/736x/10/30/5a/10305af1aeaa0ae5c1ccedb4c36aa33e.jpg) 90 104 99 95; */
+
+}
+
+.createdForm {
+border-style: solid;
+border-width: 130px 136px 171px 142px;
+-moz-border-image: url(https://www.govloop.com/wp-content/uploads/2014/10/iStock_000020506346_Small.jpg) 130 136 171 142 stretch;
+-webkit-border-image: url(https://www.govloop.com/wp-content/uploads/2014/10/iStock_000020506346_Small.jpg) 130 136 171 142 stretch;
+-o-border-image: url(https://www.govloop.com/wp-content/uploads/2014/10/iStock_000020506346_Small.jpg) 130 136 171 142 stretch;
+border-image: url(https://www.govloop.com/wp-content/uploads/2014/10/iStock_000020506346_Small.jpg) 130 136 171 142 stretch;
+}
+
+.share_sns {
+    overflow: hidden;
+    margin-top: 17px;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.info_box {
+    float: right;
+    overflow: hidden;
+    width: 400px;
+    padding-top: 20px;
+    padding-right: 20px;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.buyinfo {
+    overflow: hidden;
+    background: #f2f2f2;
+    border: 4px dotted;
+    border-color: #ff8080;
+    text-align: center;
+    display: block;
+    padding: 12px 0 12px 21px;
+    font-size:15px; 
+    font-weight:600; 
+    font-family: 맑은 고딕;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+    color:#ff0000; 
+    
+    letter-spacing: -1px; 
+}
+
+.map {
+    overflow: hidden;
+    background: #f2f2f2;
+    border: 4px dotted;
+    border-color: #ff8080;
+    text-align: center;
+    display: block;
+    padding: 12px 0 12px 21px;
+    font-size:15px; 
+    font-weight:600; 
+    font-family: 맑은 고딕;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+    color:#ff0000; 
+    
+    letter-spacing: -1px; 
+}
+
+.timer {
+  float: left;
+    font-weight: bold;
+    color: #FFB2D9;
+    font-size: 14px;
+    letter-spacing: -1px;
+    padding-top: 3px;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all; 
+}
+
+.name {
+	margin-top: 0px;
+    overflow: hidden;
+    display: block;
+    padding-top: 30px;
+    margin-bottom: 14px;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+    border-style: solid;
+	border-width: 10px 66px 9px;
+	-moz-border-image: url("/ticketfactory/resources/image/goldborder2.png") 12 66 9;
+	-webkit-border-image: url("/ticketfactory/resources/image/goldborder2.png") 12 66 9;
+	-o-border-image: url("/ticketfactory/resources/image/goldborder2.png") 12 66 9;
+	border-image: url("/ticketfactory/resources/image/goldborder2.png") 12 66 9;
+}
+
+.name dd {
+    display: block;
+    font-weight: bold;
+    color: #000;
+    font-size: 35px;
+    letter-spacing: -3px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.name dt {
+    font-size: 14px;
+    letter-spacing: -1px;
+    color: #8d8c8c;
+    font-weight: normal;
+    padding-top: 7px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.price_box {
+    overflow: hidden;
+    position: relative;
+    min-height: 83px;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.price {
+    overflow: hidden;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    position: relative;
+    min-height: 83px;
+    border-style: solid;
+border-width: 0px 42px 21px 11px;
+-moz-border-image: url("/ticketfactory/resources/image/goldborder5.png") 0 42 21 11;
+-webkit-border-image: url("/ticketfactory/resources/image/goldborder5.png") 0 42 21 11;
+-o-border-image: url("/ticketfactory/resources/image/goldborder5.png") 0 42 21 11;
+border-image: url("/ticketfactory/resources/image/goldborder5.png") 0 42 21 11 fill;
+}
+
+.price dd {
+    color: #ff008a;
+    font-size: 22px;
+    font-weight: bold;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.price dd b {
+    font-family: tahoma;
+    font-size: 35px;
+}
+
+.price dt {
+    letter-spacing: -1px;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+    margin: 19px 0 0 7px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.price dt del {
+    font-size: 30px;
+    font-family: Tahoma;
+    font-weight: normal;
+}
+
+.option {
+    overflow: hidden;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.guide_text {
+    padding: 7px 0;
+    color: #7b7b7b;
+    font-family: dotum;
+    font-size: 15px;
+    letter-spacing: -1px;
+    font-family: dotum;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-family: 맑은 고딕;
+}
+
+.price_sum {
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+    letter-spacing: -1px;
+    font-size: 14px;
+    padding-top: 7px;
+    border-top: 2px solid #333;
+    font-family: dotum;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-family: 맑은 고딕;
+}
+
+.btn_area {
+    overflow: hidden;
+    text-align: center;
+    margin-top: 24px;
+    font-family: dotum;
+    font-size: 12px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#show_total_price{
+	font-family: 맑은 고딕;
+	font-size: 14pt;
+	color: #ff008a;
+}
+#price_options_value{
+	font-family: 맑은 고딕;
+	font-size: 12pt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

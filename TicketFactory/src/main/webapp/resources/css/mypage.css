@@ -1,0 +1,94 @@
+@CHARSET "UTF-8";
+div {
+	display: block;
+}
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+p{
+	margin: 0px !important;
+}
+
+img{
+	border: none;
+}
+/* mypage session부분 */
+#mypage_session{
+	width: 980px; height: 700px;   
+	margin: 50px auto; background-color: white;
+	border : 1px solid #dedede;
+	
+	
+}
+/* mypage session의 side바 메뉴 */
+#mypage_aside{
+	width: 180px;
+	height: 700px;
+	float: left;
+	background-color: #f6f6f6;
+	color: #313131;
+	font-weight: lighter;
+	
+	
+}
+
+#mypage_aside img:HOVER{
+	cursor: pointer;
+}
+/* mypage session의 main부분 */
+#mypage_main{
+	width: 795px;
+	height: 700px;
+	float: left;
+}
+
+.mypage_main_title{
+    width: 794px;
+    height: 35px;
+    padding-top: 40px;
+}
+
+.mypage_main_bar {
+    width: 770px;
+    height: 2px;
+    margin : 15px auto;
+    border-bottom: 2px solid black;
+}
+/* mypage session의 main부분dml 상단컬럼명이 써져있는 곳 */
+.myTable {
+    font-size: 11px;
+    color: #909090;
+    padding-top: 4px;
+}
+/*회원정보 버튼이미지*/
+.modify_btn{
+	
+	width: 120px;
+	height: 50px;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	
+
+	
+}
+
+
+
+.btn2222{
+	text-align: center;
+	width: 75px;
+	height: 28px;
+	border: 1px solid #bdbdbd;
+	background: #eeeeee;
+	border-radius: 4px;
+	box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+	text-shadow: #353535 0 1px 0;
+	color: #353535;
+	font-family: 맑은 고딕;
+	font-size: 13px;
+	text-decoration: none;
+}

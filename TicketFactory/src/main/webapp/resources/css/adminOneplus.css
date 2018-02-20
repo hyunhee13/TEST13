@@ -1,0 +1,216 @@
+@CHARSET "UTF-8";
+
+
+#adminOneplus_content_main_1{
+	margin : auto;
+	background-color: white;
+	width: 980px;
+	height: 1150px;
+	border: 0px;
+}
+
+#adminOneplus_content_main_2{
+	margin: auto;
+	width: 900px;
+	height: 100px;
+	vertical-align: middle;
+	padding-top: 20px;
+}
+
+#adminOneplus_content_session_1{
+	width: 900px;
+	margin-top: 5px;
+	float: left;	
+}
+
+#adminOneplus_content_main_3{
+	margin: auto;
+	margin-top:20px;
+	width: 930px;
+	height: 950px;
+}
+#adminOneplus_bar{
+	border: 1px solid #D5D5D5;
+	width: 920px;
+	margin: auto;
+}
+.adminOneplus_content:HOVER{
+	cursor: pointer;
+}
+.icon_dot {
+    padding: 0px 0px 0px 30px;
+}
+
+.genre{
+	font-size: 12pt; 
+	text-align: left;
+	font-weight: bold; 
+	color: #313131;
+	font-family: 맑은 고딕;
+	padding-right: 20px;
+}
+.genre_kind{
+	width: 200px;
+	font-size: 10pt;
+	font-weight: normal;
+	font-family: 맑은 고딕;
+	text-decoration: none;
+}
+.genre_kind a{
+	color: #656565;
+}
+
+.adminOneplus_content_name{
+	padding-left: 5px;
+	font-weight: bold;
+	font-size: 13px;
+	color: #313131;
+}
+
+.adminOneplus_content_price{
+	font-weight: bold;
+	color: 20px;
+	color: #FF007F;
+}
+
+.adminOneplus_content_place{
+	font-weight: normal;
+	font-size: 11px;
+}
+
+table.type09 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+	font-family: 맑은 고딕;
+	font-size: 11pt;
+}
+table.type09 thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #369;
+    border-bottom: 3px solid #036;
+}
+table.type09 tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #f3f6f7;
+}
+table.type09 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+.oneplus_table{
+	font-family: 맑은 고딕;
+}
+.oneplus_table:HOVER{
+	cursor: pointer;
+}
+.css3button {
+	font-family:맑은 고딕;
+	font-weight: bold;
+	font-size: 14px;
+	color: #ffffff;
+	padding: 10px 20px;
+	background-color: #369;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #036a99;
+	left: 130px;
+	top: 30px;
+	position: relative;
+}
+.css3button:HOVER{
+	cursor: pointer;
+}
+#pLoc{
+	margin: auto;
+	text-align: center;
+	font-family: 맑은 고딕;
+	font-size: 9pt;
+	color: red;
+}
+
+
+    .bbtn {
+        background-color: orange;
+        display: inline-block;
+        border: none;
+        outline: none;
+        border-radius: 20px;
+        box-shadow: 0 5px #B0B0B0;
+        padding: 7px 10px 7px 10px;
+    }
+    .bbtn:ACTIVE {
+        background-color: #FF8C00;
+        box-shadow: 0 3px #808080;
+        transform: translateY(4px);
+    }
+    
+    .bbbtn{
+        background-color: #FF8C00;
+        display: inline-block;
+        border: none;
+        outline: none;
+        border-radius: 20px;
+        box-shadow: 0 3px #808080;
+        padding: 7px 10px 7px 10px;
+        transform: translateY(4px);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.circle1 {                                 
+  width: 30px;                               
+  height: 25px;                             
+  background: #5F00FF;                            
+  border-radius: 50%; 
+  font-family: 맑은 고딕;
+  color: white;
+  font-weight: bold; 
+  font-size: 15px;
+  text-align: center;  
+  vertical-align: middle;
+  padding-top: 4px;                 
+}
+
+.page{
+	border: 1px solid #d9d9d9;
+    color: #555;
+    font: 12px;
+    padding: 5px 5px;
+    margin: 0 1px;
+    background: #fff;
+	
+}
+
+.next{
+	width: 70px;
+    padding-right: 5px;
+}
+
+.prev{
+	
+	width: 70px;
+    padding-left: 5px;
+}
+.pageIndex{
+	text-align: center;
+}

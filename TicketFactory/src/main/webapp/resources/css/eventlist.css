@@ -1,0 +1,138 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+html, body{width:100%; height:100%; background:#eee;}
+.BodyScroll { }
+body, table{word-break:break-all; font-size:12px; font-family:³ª´®°íµñ,Nanum Gothic,Dotum,µ¸¿ò,Helvetica;}
+td{font-size:12px; font-family:³ª´®°íµñ,Nanum Gothic,Dotum,µ¸¿ò,Helvetica;}
+html { overflow-y: scroll; overflow-x: hidden; }
+select{font-size:12px; font-family:³ª´®°íµñ,Nanum Gothic,Dotum,µ¸¿ò,Helvetica;}
+
+table{border-collapse:collapse;}
+img{border:none;}
+object{display:block;}
+
+.borderImg a:hover { background:url('img/imgover.jpg') no-repeat; width:307px; height:374px; }
+.borderImg a{ background:url('img/img.jpg') no-repeat; width:307px; height:374px; }
+
+.png24img{_behavior:url("../css/iepngfix.htc");}
+.png24{_behavior:url("../css/iepngfix.htc");}
+
+.all_All_rows_bambie { font-size:11px; color:#9a9a9a; letter-spacing:-1px;}
+.all_All02_rows_bambie { font-family:µ¸¿ò; font-size:11px; color:#737373;}
+.all_Top_rows_bambie { font-size:11px; color:#FFFFFF; letter-spacing:-1px;}
+
+.all_Top_main_menu_bambie { font-size:11px; color:#FFFFFF; letter-spacing:-1px;}
+.all_Top_main_menu_bambie:hover { font-size:11px; color:#000000; letter-spacing:-1px;}
+
+.listBtn img:HOVER{
+	cursor: pointer;
+}
+.all_Tdcell_rows_bambie { font-size:12px; color:#FF6600; font-weight:bold;}
+.all_Tdcell02_rows_bambie { font-size:25px; letter-spacing:-2px; font-family:Arial; color:#FF6600; font-weight:bold;}
+.all_Tdcell03_rows_bambie { font-size:36px; font-family:Arial; color:#FFFFFF; font-weight:bold; letter-spacing:-2px;}
+.all_Tdcell04_rows_bambie { font-size:22px; font-family:Arial; color:#FFFFFF; font-weight:bold;}
+.all_Tdcell05_rows_bambie { font-size:22px; font-family:Arial; color:#FFFFFF; font-weight:bold; letter-spacing:-2px;}
+.all_Tdcell06_rows_bambie { font-size:14px; font-family:Arial; color:#FFFFFF; font-weight:bold;}
+.all_Tdcell07_rows_bambie { font-size:14px; font-family:Arial; color:#939393; font-weight:bold;}
+
+.main_TDcell_normal_price_bambie { font-size:18px; font-family:Arial; color:#9f9f9f; letter-spacing:-1px;}
+.main_TDcell_sale_price_bambie { font-size:40px; font-family:Arial; color:#FFFFFF; letter-spacing:-2px; font-weight:bold;}
+.main_TDcell_sale_price2_bambie { font-size:22pt; font-family:Arial; color:#FFFFFF; letter-spacing:-2px; font-weight:bold;}
+
+.main_TDcell_rows_todaycoupon_bambie { font-size:11px; color:#6B6B6B; font-weight:bold;}
+.main_TDcell_rows_todaycoupon02_bambie { font-size:11px; color:#0c4199; font-weight:bold;}
+
+.mypage_TDcell_rows_point_bambie { font-size:14px; color:#960000; font-weight:bold;}
+.mypage_TDcell_rows_totalprice_bambie { font-size:16px; color:#FFCA6F; font-weight:bold;}
+.inputb { border:1px solid #ddd; height:19px; line-height:19px; }
+.input_New { font-size:12px; height:22px; line-height:22px; }
+.input_NewB { font-size:12px; height:22px; line-height:22px; }
+.myTable { font-size:14px; letter-spacing:-1px; color:#909090; padding-top:4px; font-weight: 500; }
+.listCss td{font-size: 13px; font-weight: 600;}
+
+.order_TDcell_rows_pre_bambie { font-size:12px; color:#FF6600; font-weight:bold;}
+
+.search_TDcell_rows_pre_bambie { font-size:14px; color:#FF6600; font-weight:bold;}
+.search_TDcell_rows_bambie { font-size:12px; color:#000000;}
+
+
+.admin_on{color:red; font:18pt tahoma; font-weight:bold;}
+.admin_off{color:gray; font:18pt tahoma; font-weight:bold;}
+
+
+
+.join_Tdcell_rows_bambie { font-size:12px; color:#444444; font-weight:bold;}
+
+.default_TopRight_rows_bambie{font-size:12px; width:130px; height:18; background-color:#ffffff; border:1; border-style:solid;  border-color:#FFFFFF;}
+
+/**·Î±×ÀÎ¹Ú½ºÀÎÇ²**/
+.login_Box{font-size:12px; width:80px; height:14px; background-color:#8a8a8a; border:2px solid #989898; color:#FFFFFF; padding:2px 0 0 3px;}
+
+.img_bg_search {  }
+
+.input_detail{font-size:12px; width:50px; margin:0 0 0 0; height:20; background-color:#ffffff; border:1; border-style:solid;  border-color:#D0D0D0; padding:3px 0 0 0;}
+.input_view_right{font-size:12px; width:60px; height:18; background-color:#ffffff; border:1; border-style:solid;  border-color:#D0D0D0;}
+
+.logBox{font-size:12px; width:80px; height:18px; background-color:#FFFFFF; border:1; border-style:solid;  border-color:#DADADA;}
+
+.input_LogID{font-size:12px; width:100px; height:19px; background-color:#ffffff; border:1;}
+.input_LogPW{font-size:12px; width:100px; height:19px; background-color:#ffffff; border:1;}
+
+.input_sLogID{font-size:12px; width:60px; height:16px; background-image:url(../images_new/skin/img/bg_s_id.gif); border:1;}
+.input_sLogPW{font-size:12px; width:60px; height:16px; background-image:url(../images_new/skin/img/bg_s_pw.gif); border:1;}
+
+.ticker_a {text-decoration:none;color:#000000;}
+.ticker_a:hover {color:#000000;text-decoration:underline;}
+
+.white_box{font-size:12px; width:98%; height:17px; background-color:white; border:1; border-style:solid;  border-color:white;}
+.btn1 { background-color:#FBF8EE; }
+
+.smfont { font-size:11px; color:#9a9a9a;}
+
+.smfont2 { font-size:11px; color: #999999; }
+
+.smfont3 { font-size:11px; letter-spacing:-1px; font-family:³ª´®°íµñ,µ¸¿ò;}
+
+.smfont4 { font-size:12px; letter-spacing:-1px; font-family:³ª´®°íµñ,±¼¸²;}
+
+.smfont5 { font-size:18px; font-family:Arial; color:#FFFFFF; letter-spacing:-1px; font-weight:bold;}
+
+.board_Content{font-size:13px; line-height:19px;}
+.mempx { font-size:12px; color: #FF6000;}
+.catemenu{ font-size:8pt; color:#818181;}
+.sebox { font-size:11px; padding:4px 0 3px 0; }
+.click-menu .section {
+    display: none;
+}
+
+.click-menu .mainup {
+    display: block;
+}
+
+P, UL, LI
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+
+#Àå¹Ù±¸´Ï »ö»óÁöÁ¤
+.cart_title_color{ font-size:15pt; color:red;text-decoration:none;}
+
+
+
+form{margin:0px;}
+
+#dhtmltooltip{
+position: absolute;
+width: 200px;
+border: 0px solid white;
+padding: 0px;
+visibility: hidden;
+z-index: 100;
+
+
+
+/*New*/
+

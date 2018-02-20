@@ -1,0 +1,92 @@
+@CHARSET "UTF-8";
+
+#ticketInfo {
+	clear: both;
+	margin: 0px 20px 20px 20px;
+	border-left: 1px solid #EAEAEA;
+	border-right: 1px solid #EAEAEA;
+	text-align: center;
+	
+}
+
+#ticketInfo #col {	
+	/* border-top: 1px solid #ED3D84; */
+	background-color: #F5F5F5;
+	height: 30px;
+	font-size: 11px;
+	margin : 0 0;
+	border: 1px solid black;
+}
+
+#ticketInfo #col p {
+	line-height : 30px;
+	float:left;
+	margin : 0 0;
+	
+}
+
+/* #ticketInfo #col dt {
+	float:left;
+} */
+
+#ticketInfo #col .info {width: 248px; }
+#ticketInfo #col .price {width: 120px; }
+#ticketInfo #col .su {width: 120px; }
+#ticketInfo #col .totalPrice {width: 120px; }
+#ticketInfo #col .deleted {width: 100px;}
+
+#ticketInfo #list {
+	height: 60px;
+	margin : 0 0;
+	border: 1px solid black;
+}
+
+/* #ticketInfo #list dl {
+	background-color: #FFFFFF;
+	height: 70px;
+	border: 1px solid black;
+} */
+
+#ticketInfo #list p {
+	
+	
+	/* border : 1px solid black; */
+	background-color: #FFFFFF;
+	margin : 0 0;
+	float: left;
+	font-size: 11px;
+	line-height: 60px;
+	text
+	
+	
+}
+
+#ticketInfo #list .info {width: 248px; border-right: 1px solid #E3E3E3;  word-wrap:break-word; }
+#ticketInfo #list .price {width: 120px; border-right: 1px solid #E3E3E3;}
+#ticketInfo #list .su {width: 120px; border-right: 1px solid #E3E3E3;}
+#ticketInfo #list .totalPrice {width: 120px; border-right: 1px solid #E3E3E3;}
+#ticketInfo #list .deleted {width: 98px;}
+
+
+
+
+#showInfo {
+	
+}
+
+#top_wrap { width:100%; margin:auto; background:#313131; height:130px; }
+#top_gnb_wrap { border-bottom:1px solid #454545;   }
+#top_gnb_area { width:980px; margin:auto; height:30px; position:relative; }
+#top_gnb_box { position:absolute; right:0px; }
+#top_logo_wrap {width:980px; margin:auto; height:70px; margin-top:25px; }
+#top_gnb { margin: 0; padding: 0; }
+#top_gnb li { float: left; list-style: none; font-size:11px; border-bottom:1px solid #454545; line-height:14px;}
+#top_gnb li a { display: block; text-align:center; 	background: #313131; padding: 8px 9px; border-left: 1px solid #454545; width: 75px; color: #fff; white-space: nowrap; }
+#top_gnb li a:hover { background: #444; }
+#top_gnb li ul { margin: 0; padding: 0; position: absolute; visibility: hidden; }
+#top_gnb li ul li { float: none; display: inline; }
+#top_gnb li ul li a { width: 75px; font-size:11px; background: #313131; color: #fff; padding:8px 9px 8px 9px; }
+#top_gnb li ul li a:hover { background: #444;  }
+.top_gnb_pri {border-right:1px solid #454545; }
+.top_gnb_arrow {font-size:9px; margin-left:3px; vertical-align:top; }
+.top_gnb_sub {border-right:1px solid #454545; border-bottom:1px solid #454545;}

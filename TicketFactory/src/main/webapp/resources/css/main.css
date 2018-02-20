@@ -1,0 +1,67 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body, table{word-break:break-all; font-size:12px;}
+html { overflow-y: scroll; overflow-x: hidden; }
+
+table{border-collapse:collapse;}
+
+
+          
+#wrap {
+	display: inline-table;
+	position: relative;
+	width: 100%;
+	background: #eeeeee;
+	height: 500px;
+}
+
+ #wrap_in{
+	width: 1010px;
+	height: 500px;
+	margin: auto;
+}
+
+#main_bn {
+	float:left;
+	width: 700px;
+	height: 450px;
+	text-align:left;
+}
+ #main_bn2{
+	float: left;
+	width: 300px;
+	height: 410px;
+	margin: 30px 0px 0px 5px;
+}
+
+#main_side{
+	margin: auto;
+	width: 300px;
+	height: 205px;
+
+} 
+
+ #main_bn img {
+	width:100%;
+	height:auto;
+	padding-top: 30px;
+} 
+
+#main_bn_btn {
+	width: 500px;
+	padding-left: 280px;
+	list-style-type: none;
+	position: absolute;
+	border: 0px;
+	top: 370px;
+}
+
+#main_bn_btn li {
+	float: left;
+	padding: 10px;
+}
+a, a:hover, a:visited { text-decoration:none; }
+ul li { list-style : none; }
+
+
+         

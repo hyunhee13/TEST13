@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+
+ul {
+	list-style: none;
+}
+
+td {font-size: 9pt;}
+
+.btn1 {font-size: 9pt; color:rgb(0,0,0); background-color:rgb(245,245,245); line-height:16px;}
+.btn2 {   
+/* 	line-height:16px;
+	filter:progid:DXImageTransform.Microsoft.Gradient   
+		(GradientType=0,StartColorStr='#ffffffff',EndColorStr='#ffeeddaa'); */
+	padding:1px 6px 1px 6px;
+	border: 1px solid #d9d9d9;
+    color: #555;
+    font: 12px;
+    padding: 5px 5px;
+    margin: 0 1px;
+    background: #fff;
+    
+    font-family: 맑은 고딕;
+    width: 70px;
+    height: 20px;
+}
+

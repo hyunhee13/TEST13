@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="signMapper">
+
+<insert id="insertData" parameterType="com.exe.ticketfactory.dto.TicketDTO">
+
+insert into custom (userId,userPwd,userName,userAddr_num,
+userAddr,userAddr_detail,userGender,userTel,userEmail,userFavor,
+userPoint) values (#{userId},#{userPwd},#{userName},#{userAddr_num},
+#{userAddr},#{userAddr_detail},#{userGender},#{userTel},#{userEmail},#{userFavor,jdbcType=NUMERIC},0)
+
+</insert>
+
+<select id="checkId" parameterType="hashMap" resultType="com.exe.ticketfactory.dto.TicketDTO">
+select * from custom where userId=#{userId}
+</select>
+
+<select id="login" parameterType="hashMap" resultType="com.exe.ticketfactory.dto.TicketDTO">
+select * from custom where userId=#{userId} and userPwd=#{userPwd}
+</select>
+
+<update id="updateData" parameterType="hashMap" >
+update custom set userId=#{userId},userPwd=#{userPwd},userName=#{userName},
+userAddr_num=#{userAddr_num},userAddr=#{userAddr},userAddr_detail=#{userAddr_detail},
+userGender=#{userGender},userTel=#{userTel},userEmail=#{userEmail}
+ where userId=#{userId}
+</update>
+
+<delete id="deleteData" parameterType="hashMap">
+delete custom where userId=#{userId}
+</delete>
+
+<select id="search_id" parameterType="hashMap" resultType="com.exe.ticketfactory.dto.TicketDTO">
+select * from custom where userName=#{userName} and userEmail=#{userEmail}
+</select>
+
+<select id="search_pwd" parameterType="hashMap" resultType="com.exe.ticketfactory.dto.TicketDTO">
+select * from custom where userId=#{userId} and userEmail=#{userEmail}
+</select>
+
+<!-- 해당 회원 아이디의 예매내역들 -->
+
+<select parameterType="String" id="getBookAll" resultType="com.exe.ticketfactory.dto.BookDTO"> 
+select userId,showId,bookDate,bookNum,bookSu,bookPrice,usedPoint,showDay,showTime,bookState
+ from book where userId=#{userId} order by bookDate desc 
+ </select>
+ 
+ <!-- 해당 회원 아이디의 예매내역들 갯수 -->
+
+
+<select parameterType="hashMap" id="getBookCount" resultType="int">
+ select count(*) from book where userId=#{userId}
+  </select>
+
+<select parameterType="hashMap" id="searchData" resultType="com.exe.ticketfactory.dto.SearchDTO">
+select * from ( select rownum rnum, search.* from ( select showId,showName,showPlace,showGenre, show.placeId, placeAddr, showPrice, showPoster, placeName from show, place where (placeAddr like '%' || #{search_word} || '%' or showName like '%' || #{search_word} || '%' or showGenre like '%' || #{search_word} || '%' or showPlace like '%' || #{search_word} || '%') and show.placeId=place.placeId) search ) 
+<![CDATA[ where rnum>=#{start} and rnum<=#{end} ]]>
+
+</select>
+
+<select parameterType="String" id="getDataCount" resultType="int">
+ select nvl(count(*),0) from show, place where (placeAddr like '%' || #{search_word} || '%' or showName like '%' || #{search_word} || '%' or showGenre like '%' || #{search_word} || '%' or showPlace like '%' || #{search_word} || '%') and show.placeId=place.placeId 
+ </select>
+
+</mapper>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dataMapper">
+
+<select id="selectShowAll" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice,
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo 
+	from show order by showId
+</select>
+
+<select id="selectShowAllWithoutEvent" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice,
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo 
+	from show where showId not in (select showId from oneplus) order by showId
+</select>
+
+<select id="selectShowAllWithEvent" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice,
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo 
+	from show where showId in (select showId from oneplus) order by showId
+</select>
+
+<select id="getShowCount" resultType="int" parameterType="String">
+	select count(*) from show where showGenre=#{showGenre}
+</select>
+
+<select id="getShowCountWithoutEvent" resultType="int" parameterType="String">
+	select count(*) from show where showGenre=#{showGenre} and showId not in (select showId from oneplus)
+</select>
+
+<select id="getShowCountWithEvent" resultType="int" parameterType="String">
+	select count(*) from show where showGenre=#{showGenre} and showId in (select showId from oneplus)
+</select>
+
+<select id="getShowByGenre" parameterType="String" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice, 
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo
+	from show where showGenre=#{showGenre}
+</select>
+
+<select id="selectShowByGenre" parameterType="map" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select showId, showName, placeId, showPlace, showPrice, showActor, showCrew, showRuntime, showStory, showGenre, showCreator, 
+	showLimit, showPoster, showFrom, showTo from show where showGenre=#{showGenre} order by showId) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<select id="selectShowWithoutEvent" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select showId, showName, placeId, showPlace, showPrice, showActor, showCrew, showRuntime, showStory, showGenre, showCreator, 
+	showLimit, showPoster, showFrom, showTo from show where showGenre=#{showGenre} and showId not in (select showId from oneplus) order by showId) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<select id="selectShowWithEvent" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select showId, showName, placeId, showPlace, showPrice, showActor, showCrew, showRuntime, showStory, showGenre, showCreator, 
+	showLimit, showPoster, showFrom, showTo from show where showGenre=#{showGenre} and showId in (select showId from oneplus) order by showId) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<select id="getShowByGenreDate" parameterType="map" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice, 
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo
+	from show where showGenre=#{showGenre} and showId in (select showId from timetable where showDate=#{showDate}) order by ${order}
+</select>
+
+<select id="selectShowShowId" parameterType="String" resultType="String">
+	select showId from show where showId=#{showId}
+</select>
+
+<select id="selectShowOne" parameterType="String" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice,
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo 
+	from show where showId=#{showId}
+</select>
+
+<!-- <select id="selectShowToday" parameterType="String" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice,
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo 
+<![CDATA[
+	from show where showFrom<=#{today} and showTo>=#{today}
+]]>
+</select> -->
+
+<select id="selectShowToday" parameterType="String" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId, showName, placeId, showPlace, showPrice, 
+	showActor, showCrew, showRuntime, showStory, showGenre, showCreator, showLimit, showPoster, showFrom, showTo
+	from show where showId in (select distinct showId from timetable where showDate=#{showDate})
+</select>
+
+<select id="selectPlaceAll" resultType="com.exe.ticketfactory.dto.PlaceDTO">
+	select placeId, placeName, placeOpen, placeSeat, placeTel, placeUrl, placeAddr,
+	placeLa, placeLo, placeChar from place
+</select>
+
+<select id="selectPlaceSeat" parameterType="String" resultType="int">
+	select placeSeat from place where placeId=#{placeId}
+</select>
+
+<select id="selectPlaceOne" parameterType="String" resultType="com.exe.ticketfactory.dto.PlaceDTO">
+	select placeId, placeName, placeOpen, placeSeat, placeTel, placeUrl, placeAddr,
+	placeLa, placeLo, placeChar from place where placeId=#{placeId}
+</select>
+
+<select id="selectImageAll" resultType="com.exe.ticketfactory.dto.ImageDTO">
+	select showId, imageLink from showImage
+</select>
+
+<select id="selectTimeAll" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showId, showTime, showDay,showDate, seat,
+	seat1,seat2,seat3,seat4,seat5,seat6,seat7,seat8
+	 from timetable
+</select>
+
+<select id="selectTimeOne" parameterType="String" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showId, showTime, showDay, seat,showDate from timetable where showId=#{showId} order by showDate
+</select>
+
+<select id="selectTimeByDay" parameterType="Map" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showTime from timetable where showId=#{showId} and showDay=#{showDay}
+</select>
+
+<select id="selectTimeByDate" parameterType="Map" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showTime,seat,
+	seat1,seat2,seat3,seat4,seat5,seat6,seat7,seat8
+	 from timetable where showId=#{showId} and showDate=#{showDate}
+</select>
+
+<select id="selectDistDate" parameterType="String" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select distinct showDate, showDay from timetable where showId=#{showId} order by showDate
+</select>
+
+<select id="selectDayDist" parameterType="String" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select distinct showDay from timetable where showId=#{showId}
+</select>
+
+<select id="selectImageOne" parameterType="String" resultType="com.exe.ticketfactory.dto.ImageDTO">
+	select showId, imageLink from showImage where showId=#{showId}
+</select>
+
+<select id="selectOneplus" parameterType="String" resultType="String">
+	select showId from oneplus where showId=#{showId}
+</select>
+
+<select id="selectAvgStar" parameterType="String" resultType="String">
+	select round(avg(star),0) from review where showId=#{showId}
+</select>
+
+
+<insert id="insertOneplus" parameterType="String">
+	insert into oneplus values (#{showId})
+</insert>
+<delete id="deleteOneplus" parameterType="String">
+	delete oneplus where showId=#{showId}
+</delete>
+
+<!-- 예매page에서 결제하였을때 book테이블에 값 입력 -->
+<insert id="insertGroupBook" parameterType="com.exe.ticketfactory.dto.GroupReservationDTO">
+	insert into groupReservation (groupName,showId,groupBookDate,groupBookNum,groupBookSu,groupBookPriceEach,groupShowDay,groupShowTime,groupBookSeat,groupSeat_Num,groupBookPrice,groupBookEmail,groupBookTel)
+	values (#{groupName},#{showId},sysdate,#{groupBookNum},#{groupBookSu},#{groupBookPriceEach},#{groupShowDay},#{groupShowTime},#{groupBookSeat},#{groupSeat_Num},#{groupBookPrice},#{groupBookEmail},#{groupBookTel})
+</insert>
+
+
+
+
+<!-- 티켓주문 정상 완료시 넘어간 페이지에서 해당 티켓 불러오기 -->
+<select id="getReadSuccessGroup" parameterType="String" resultType="com.exe.ticketfactory.dto.GroupReservationDTO">
+	select groupName,showId,groupBookDate,groupBookNum,groupBookSu,groupBookPriceEach,groupShowDay,groupShowTime,groupBookSeat,groupSeat_Num,groupBookPrice,groupBookEmail,groupBookTel
+	from groupReservation where groupBookNum=#{groupBookNum}
+</select>
+
+<!-- TimeTable에서 조건(showId,showDay,showTime)에 맞는 해당 정보 불러오기 -->
+<select id="getReadTimeTableGroup" parameterType="com.exe.ticketfactory.dto.SeatDTO" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showId,showTime,showDay,seat,showDate,seat1,seat2,seat3,seat4,seat5,seat6,seat7,seat8 
+	from timeTable where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</select>
+</mapper>

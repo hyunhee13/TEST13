@@ -1,0 +1,220 @@
+@CHARSET "UTF-8";
+
+/* adminBtn.jsp부분(버튼) */
+#AdminBg {
+	background-color: white;
+	width: 980px;;
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.title01 {
+	font-family: 맑은 고딕;
+	font-size: 25px;
+	font-weight: bold;
+	padding-left: 20px;
+	padding-top: 15px;
+	color: #3D3D3D;
+	display: inline-block;
+	
+}
+
+.manageSelectBox {
+	font-family: 맑은 고딕;
+	font-size: 13px;
+	font-weight: bold;
+	color: #3d3d3d;
+	margin-left: 5px;
+}
+
+.line01 {
+	border: 1px solid #353535;
+	width: 95%;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-bottom: 0px;
+}
+/* 
+adminBtn.jsp 관련 
+#button01 {
+	width: 340px;
+	height: 80px;
+	background-color: white;
+	margin: 10px 10px 30px 15px;
+	font-family: 배달의민족 도현;
+	font-size: 35px;
+	border-radius: 10px;
+	border: 2px solid #993800;
+}
+#button02 {
+	width: 340px;
+	height: 80px;
+	margin: 10px 15px 30px 10px;
+	font-family: 배달의민족 도현;
+	font-size: 35px;
+	border-radius: 10px;
+	border: 2px solid #751400;
+	background-color: white;  
+}
+#test01 {
+	width: 400px;
+	height: 460px;
+	float: left;
+	margin-left: 25px;
+}
+#test02 {
+	width: 400px;
+	height: 460px;
+	float: right;
+	margin-right: 25px;
+}
+*/
+
+
+
+
+/* 페이징 */
+.page{
+	border: 1px solid #d9d9d9;
+    color: #555;
+    font: 12px;
+    padding: 5px 5px;
+    margin: 0 1px;
+    background: #fff;
+	
+}
+
+.next{
+	width: 70px;
+    padding-right: 5px;
+}
+
+.prev{
+	
+	width: 70px;
+    padding-left: 5px;
+}
+
+#paging {
+	text-align: center;
+	font-family: 맑은 고딕;
+	margin: 30px 0px 30px 0px;
+}
+
+
+
+/* 말줄임표
+display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+ */
+
+
+
+/* 관리자 페이지 column 설정 */
+#col {
+	width: 933px;
+	margin: 0px 20px 5px 20px;
+	height: 45px;
+	font-size: 18px;
+	font-family: 맑은 고딕;
+	color: #313131;
+	text-align: center;
+	border-bottom: 1px solid #5D5D5D;
+	font-weight: bold;
+}
+
+#col p {
+	line-height: 45px;
+	float: left;
+	margin: 0 0;
+}
+
+
+
+/* descBook.jsp 부분 */
+#col .showName {width: 150px; border-right: 1px solid #BDBDBD;}
+#col .showPlace {width: 150px; border-right: 1px solid #BDBDBD; }
+#col .ticketPrice {width: 115px; border-right: 1px solid #BDBDBD;}
+#col .runningTime {width: 90px; border-right: 1px solid #BDBDBD;}
+#col .showGenre {width: 80px; border-right: 1px solid #BDBDBD;}
+#col .showTo {width: 90px; border-right: 1px solid #BDBDBD;}
+#col .showFrom {width: 90px; border-right: 1px solid #BDBDBD;}
+#col .accrue {width: 80px;}
+
+
+/* descCustom.jsp 부분 */
+#col .userId {width: 100px; border-right: 1px solid #BDBDBD;}
+#col .userName {width: 100px; border-right: 1px solid #BDBDBD;}
+#col .addr_num {width: 100px; border-right: 1px solid #BDBDBD;}
+#col .addr {width: 200px; border-right: 1px solid #BDBDBD;}
+#col .gender {width: 60px; border-right: 1px solid #BDBDBD;}
+#col .userTel {width: 100px; border-right: 1px solid #BDBDBD;}
+#col .userEmail {width: 116px; border-right: 1px solid #BDBDBD;}
+#col .userPoint {width: 150px; }
+
+
+/* customGrade.jsp 부분(descCustom.jsp 부분 추가) */
+#col .userGrade {width: 75px; border-right: 1px solid #BDBDBD;}
+#col .userEmailGrade {width: 90px; border-right: 1px solid #BDBDBD;}
+#col .userPointGrade {width: 100px; border-right: 1px solid #BDBDBD;}
+#col .accruePrice {width: 100px;}
+
+
+/* 관리자 페이지 ListInfo 설정 */
+#listInfo {
+	width: 935px;
+	font-size: 15px;
+	font-family: 맑은 고딕;
+	color: #313131;
+	margin: 0px 20px 5px 20px;
+	height: 35px;
+	border-bottom: 1px solid #00004B;
+}
+
+#listInfo p {
+	float: left;
+	margin: 0 0;
+	line-height: 35px;
+}
+
+
+/* descBook.jsp 부분(예매순으로 뿌리기) */
+#listInfo .showName {width: 150px; border-right: 1px solid #BDBDBD; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+#listInfo .showPlace {width: 150px; border-right: 1px solid #BDBDBD; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+#listInfo .ticketPrice {width: 115px; border-right: 1px solid #BDBDBD;}
+#listInfo .runningTime {width: 90px; border-right: 1px solid #BDBDBD;}
+#listInfo .showGenre {width: 80px; border-right: 1px solid #BDBDBD;}
+#listInfo .showTo {width: 90px; border-right: 1px solid #BDBDBD;}
+#listInfo .showFrom {width: 90px; border-right: 1px solid #BDBDBD;}
+#listInfo .accrue {width: 80px;}
+
+
+/* descCustom.jsp 부분(예매많이한 회원순으로 뿌리기) */
+#listInfo .userId {width: 100px; border-right: 1px solid #BDBDBD;}
+#listInfo .userName {width: 100px; border-right: 1px solid #BDBDBD;}
+#listInfo .addr_num {width: 100px; border-right: 1px solid #BDBDBD;}
+#listInfo .addr {width: 200px; border-right: 1px solid #BDBDBD; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+#listInfo .gender {width: 60px; border-right: 1px solid #BDBDBD;}
+#listInfo .userTel {width: 100px; border-right: 1px solid #BDBDBD;}
+#listInfo .userEmail {width: 116px; border-right: 1px solid #BDBDBD; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+#listInfo .userPoint {width: 150px; }
+
+
+/* customGrade.jsp 부분(descCustom.jsp 부분 추가) */
+#listInfo .userGrade {width: 75px; border-right: 1px solid #BDBDBD;}
+#listInfo .userEmailGrade {width: 90px; border-right: 1px solid #BDBDBD; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+#listInfo .userPointGrade {width: 100px; border-right: 1px solid #BDBDBD;}
+#listInfo .accruePrice {width: 100px;}
+
+
+
+
+
+
+
+
+
+
+
+
+

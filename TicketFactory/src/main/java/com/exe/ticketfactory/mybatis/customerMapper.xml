@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customerMapper">
+
+<!-- notice -->
+
+<select id="maxNum" resultType="int">
+	select nvl(max(notiNum),0) from notice
+</select>
+
+<insert id="insertData" parameterType="com.exe.ticketfactory.board.dto.NoticeDTO">
+	insert into notice (notiNum,notiSubject,notiContent,notiCreated) 
+	values (#{notiNum},#{notiSubject},#{notiContent},sysdate)
+</insert>
+
+<select id="getDataCount" parameterType="hashMap" resultType="int">
+	select nvl(count(*),0 ) from notice
+</select>
+
+<select id="getLists" parameterType="hashMap" resultType="com.exe.ticketfactory.board.dto.NoticeDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select notiNum,notiSubject,
+	to_char(notiCreated,'YYYY-MM-DD') notiCreated from notice
+	order by notiNum desc) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<select id="getReadData" parameterType="int" resultType="com.exe.ticketfactory.board.dto.NoticeDTO">
+	select notiNum,notiSubject,notiContent,notiCreated from notice 
+	where notiNum=#{notiNum}
+</select>
+
+<update id="updateData" parameterType="com.exe.ticketfactory.board.dto.NoticeDTO">
+	update notice set notiSubject=#{notiSubject},notiContent=#{notiContent} 
+	where notiNum=#{notiNum}
+</update>
+
+<delete id="deleteData" parameterType="int">
+	delete notice where notiNum=#{notiNum}
+</delete>
+
+<!-- faq -->
+
+<select id="faqMaxNum" resultType="int">
+	select nvl(max(faqNum),0) from faq
+</select>
+
+<insert id="faqInsertData" parameterType="com.exe.ticketfactory.board.dto.FaqDTO">
+	insert into faq (faqNum,faqSubject,faqContent,faqHitcount) 
+	values (#{faqNum},#{faqSubject},#{faqContent},0)
+</insert>
+
+<select id="faqGetDataCount" parameterType="hashMap" resultType="int">
+	select nvl(count(*),0 ) from faq
+</select>
+
+<select id="faqGetLists" parameterType="hashMap" resultType="com.exe.ticketfactory.board.dto.FaqDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select faqNum,faqSubject from faq
+	order by faqNum desc) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<select id="faqGetReadData" parameterType="int" resultType="com.exe.ticketfactory.board.dto.FaqDTO">
+	select faqNum,faqSubject,faqContent from faq 
+	where faqNum=#{faqNum}
+</select>
+
+<update id="faqUpdateData" parameterType="com.exe.ticketfactory.board.dto.FaqDTO">
+	update faq set faqSubject=#{faqSubject},faqContent=#{faqContent} 
+	where faqNum=#{faqNum}
+</update>
+
+<update id="faqUpdateHitCount" parameterType="int">
+	update faq set faqHitCount=faqHitCount+1 where faqNum=#{faqNum}
+</update>
+
+<delete id="faqDeleteData" parameterType="int">
+	delete faq where faqNum=#{faqNum}
+</delete>
+
+<select id="faqGetHitCountList" parameterType="hashMap" resultType="com.exe.ticketfactory.board.dto.FaqDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select faqNum,faqSubject from faq
+	order by faqHitCount desc) data)
+<![CDATA[
+	where rnum>=1 and rnum<=3
+]]>
+</select>
+
+<!-- enquiry -->
+
+<select id="eqMaxNum" resultType="int">
+	select nvl(max(eqNum),0) from enquiry
+</select>
+
+<insert id="eqInsertData" parameterType="com.exe.ticketfactory.board.dto.EnquiryDTO">
+	insert into enquiry (eqNum,eqSubject,eqContent,eqType,eqProduct,
+	eqCreated,eqId,eqTel) values (#{eqNum},#{eqSubject},#{eqContent},
+	#{eqType},#{eqProduct},sysdate,#{eqId},#{eqTel})
+</insert>
+
+<select id="eqGetDataCount" parameterType="hashMap" resultType="int">
+	select nvl(count(*),0) from enquiry
+	where ${searchKey} like '%' || #{searchValue} || '%'
+</select>
+
+<select id="eqGetMemberDataCount" parameterType="hashMap" resultType="int">
+	select nvl(count(*),0) from enquiry
+	where ${searchKey} like '%' || #{searchValue} || '%' and eqId=#{eqId}
+</select>
+
+<select id="eqGetLists" parameterType="hashMap" resultType="com.exe.ticketfactory.board.dto.EnquiryDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select eqNum,eqSubject,eqContent,eqType,eqProduct,
+	to_char(eqCreated,'YYYY-MM-DD') eqCreated,eqId,eqTel from enquiry
+	where ${searchKey} like '%' || #{searchValue} || '%'
+	order by eqNum desc) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<select id="eqMemberGetLists" parameterType="hashMap" resultType="com.exe.ticketfactory.board.dto.EnquiryDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select eqNum,eqSubject,eqContent,eqType,eqProduct,
+	to_char(eqCreated,'YYYY-MM-DD') eqCreated,eqId,eqTel from enquiry
+	where ${searchKey} like '%' || #{searchValue} || '%'
+	order by eqNum desc) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end} and eqId=#{eqId}
+]]>
+</select>
+
+<select id="eqGetReadData" parameterType="int" resultType="com.exe.ticketfactory.board.dto.EnquiryDTO">
+	select eqNum,eqSubject,eqContent,eqType,eqProduct,eqCreated,
+	eqId,eqTel from enquiry where eqNum=#{eqNum}
+</select>
+
+<delete id="eqDeleteData" parameterType="int">
+	delete enquiry where eqNum=#{eqNum}
+</delete>
+
+<delete id="eq_DeleteData" parameterType="int">
+	delete eqComment where eqNum=#{eqNum}
+</delete>
+
+<!-- enquiryComment -->
+
+<select id="eqcMaxNum" resultType="int">
+	select nvl(max(eqcNum),0) from eqComment
+</select>
+
+<insert id="eqcInsertData" parameterType="com.exe.ticketfactory.board.dto.EnquiryCommentDTO">
+	insert into eqComment (eqcNum,eqNum,eqId,eqcContent,eqcCreated) 
+	values (#{eqcNum},#{eqNum},#{eqId},#{eqcContent},sysdate)
+</insert>
+
+<select id="eqcGetDataCount" resultType="int">
+	select nvl(count(*),0) from eqComment where eqNum=#{eqNum}
+</select>
+
+<select id="eqcGetLists" parameterType="hashMap" resultType="com.exe.ticketfactory.board.dto.EnquiryCommentDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select eqcNum,eqNum,eqId,eqcContent,to_char(eqcCreated,'YYYY-MM-DD') eqcCreated 
+	from eqComment where eqNum=#{eqNum} order by eqcNum desc) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<delete id="eqcDeleteData" parameterType="int">
+	delete eqComment where eqcNum=#{eqcNum}
+</delete>
+
+<!-- event -->
+
+<select id="ebMaxNum" resultType="int">
+	select nvl(max(ebNum),0) from eventboard
+</select>
+
+<insert id="ebInsertData" parameterType="com.exe.ticketfactory.board.dto.EventDTO">
+	insert into eventboard (ebNum,ebTitle,ebSubject,ebTitleContent,ebTitleimage,ebContent,
+	ebHitCount,ebPeriodFrom,ebPeriodTo,ebCreated) values (#{ebNum},#{ebTitle},#{ebSubject},
+	#{ebTitleContent},#{ebTitleimage},#{ebContent},0,#{ebPeriodFrom},#{ebPeriodTo},
+	sysdate)
+</insert>
+
+<select id="ebGetDataCount" parameterType="hashMap" resultType="int">
+	select nvl(count(*),0) from eventboard
+</select>
+
+<select id="ebGetLists" parameterType="hashMap" resultType="com.exe.ticketfactory.board.dto.EventDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select ebNum,ebTitle,ebSubject,ebTitleContent,ebTitleimage,ebContent,ebPeriodFrom,ebPeriodTo,
+	to_char(ebCreated,'YYYY-MM-DD') ebCreated from eventboard
+	order by ebNum desc) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<select id="ebGetReadData" parameterType="int" resultType="com.exe.ticketfactory.board.dto.EventDTO">
+	select ebNum,ebTitle,ebTitleimage,ebTitleContent,ebSubject,ebContent,ebPeriodFrom,ebPeriodTo,ebCreated,ebHitCount 
+	from eventboard where ebNum=#{ebNum}
+</select>
+
+<update id="ebUpdateData" parameterType="com.exe.ticketfactory.board.dto.EventDTO">
+	update eventboard set ebTitle=#{ebTitle},ebTitleimage=#{ebTitleimage},ebSubject=#{ebSubject},
+	ebTitleContent=#{ebTitleContent},ebPeriodFrom=#{ebPeriodFrom},
+	ebPeriodTo=#{ebPeriodTo},ebContent=#{ebContent} where ebNum=#{ebNum}
+</update>
+
+<delete id="ebDeleteData" parameterType="int">
+	delete eventboard where ebNum=#{ebNum}
+</delete>
+
+<update id="ebUpdateHitCount" parameterType="int">
+	update eventboard set ebHitCount=ebHitCount+1 where ebNum=#{ebNum}
+</update>
+
+<!-- 양도르스 -->
+<select id="ydMaxNum" resultType="int">
+	select nvl(max(ydNum),0) from yangdo
+</select>
+
+<insert id="ydInsertData" parameterType="com.exe.ticketfactory.board.dto.YangdoDTO">
+	insert into yangdo (ydNum,ydType,ydSubject,ydId,ydContent,
+	ydIpAddr,ydHitCount,ydCreated) values 
+	(#{ydNum},#{ydType},#{ydSubject},#{ydId},#{ydContent},
+	#{ydIpAddr},0,sysdate)
+</insert>
+
+<select id="ydGetDataCount" parameterType="hashMap" resultType="int">
+	select nvl(count(*),0) from yangdo
+	where ${searchKey} like '%' || #{searchValue} || '%'
+</select>
+
+<select id="ydGetLists" parameterType="hashMap" resultType="com.exe.ticketfactory.board.dto.YangdoDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select ydNum,ydType,ydSubject,ydId,to_char(ydCreated,'YYYY-MM-DD') ydCreated 
+	from yangdo where ${searchKey} like '%' || #{searchValue} || '%' 
+	order by ydNum desc) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<select id="ydGetReadData" parameterType="int" resultType="com.exe.ticketfactory.board.dto.YangdoDTO">
+	select ydNum,ydType,ydSubject,ydContent,ydIpAddr,ydHitCount,ydCreated, ydId 
+	from yangdo where ydNum=#{ydNum}
+</select>
+
+<update id="ydUpdateHitCount" parameterType="int">
+	update yangdo set ydHitCount=ydHitCount+1 where ydNum=#{ydNum}
+</update>
+
+<update id="ydUpdateData" parameterType="com.exe.ticketfactory.board.dto.YangdoDTO">
+	update yangdo set ydType=#{ydType},ydSubject=#{ydSubject},
+	ydContent=#{ydcontent} where ydNum=#{ydNum}
+</update>
+
+<!-- <delete id="ydDeleteData">
+	delete yangdo where ydNum in
+	(select ydNum from yangdo start with ydNum=#{ydNum}
+	connect by prior ydNum=ydParent)
+</delete> -->
+
+<delete id="ydDeleteData" parameterType="int">
+	delete yangdo where ydNum=#{ydNum}
+</delete>
+
+<delete id="ydDeleteAllData" parameterType="int">
+	delete ydComment where ydNum=#{ydNum}
+</delete>
+
+<!-- yangdoComment -->
+
+<select id="ydcMaxNum" resultType="int">
+	select nvl(max(ydcNum),0) from ydComment
+</select>
+
+<select id="ydcGetReadData" parameterType="int" resultType="com.exe.ticketfactory.board.dto.YangdoCommentDTO">
+	select ydcNum,ydNum,ydcId,ydcContent,
+	ydcGroupNum,ydcDepth,ydcOrderNum,ydcParentNum,ydcCreated 
+	from ydComment where ydcNum=#{ydcNum}
+</select>
+
+<insert id="ydcInsertData" parameterType="com.exe.ticketfactory.board.dto.YangdoCommentDTO">
+	insert into ydComment (ydcNum,ydNum,ydcId,ydcContent,
+	ydcGroupNum,ydcDepth,ydcOrderNum,ydcParentNum,ydcCreated) 
+	values (#{ydcNum},#{ydNum},#{ydcId},#{ydcContent},
+	#{ydcGroupNum},#{ydcDepth},#{ydcOrderNum},#{ydcParentNum},sysdate)
+</insert>
+
+<select id="ydcGetDataCount" resultType="int">
+	select nvl(count(*),0) from ydComment where ydNum=#{ydNum}
+</select>
+
+<select id="ydcGetLists" parameterType="map" resultType="com.exe.ticketfactory.board.dto.YangdoCommentDTO">
+	select * from (
+	select rownum rnum, data.* from(
+	select ydcNum,ydNum,ydcId,ydcContent,ydcCreated,ydcDepth 
+	from ydComment where ydNum=#{ydNum} order by ydcGroupNum desc,ydcOrderNum asc ) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<delete id="ydcDeleteData" parameterType="int">
+	delete ydComment where ydcNum in
+	(select ydcNum from ydComment start with ydcNum=#{ydcNum}
+	connect by prior ydcNum=ydcParentNum)
+</delete>
+
+
+<!-- 답변일경우 순서를 변경 -->
+
+
+<update id="orderNumUpdate" parameterType="map">
+	update ydComment set ydcOrderNum = ydcOrderNum +1
+	where ydcGroupNum = #{ydcGroupNum} and ydcOrderNum>#{ydcOrderNum}
+</update>
+
+
+
+</mapper>

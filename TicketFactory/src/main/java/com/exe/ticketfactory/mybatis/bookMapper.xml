@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bookMapper">
+
+<!-- 한 회원의 정보 불러오기 -->
+<select id="getReadCustom" parameterType="String" resultType="com.exe.ticketfactory.dto.TicketDTO">
+	select userId,userPwd,userName,userAddr_Num,userAddr,userAddr_Detail,userGender,userTel,userEmail,userFavor,userPoint
+	from custom where userId=#{userId}
+</select>
+
+<!-- 한 공연정보 불러오기 -->
+<select id="getReadShow" parameterType="String" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId,showName,placeId,showPlace,showPrice,showActor,showCrew,showRuntime,showStory,showGenre,showCreator,showLimit,showPoster,showFrom,showTo
+	from show where showId=#{showId}
+</select>
+
+<!-- 해당 공연에 대한 공연이미지(showPoster) 불러오기 -->
+<select id="getReadShowImage" parameterType="String" resultType="com.exe.ticketfactory.dto.ShowImageDTO">
+	select showId,imageLink from showImage where showId=#{showId}
+</select>
+
+<!-- 예매page에서 결제하였을때 book테이블에 값 입력 -->
+<insert id="insertBook" parameterType="com.exe.ticketfactory.dto.BookDTO">
+	insert into book (userId,showId,bookDate,bookNum,bookSu,bookPrice,usedPoint,showDay,showTime,bookState,seat,seat_num)
+	values (#{userId},#{showId},to_date(sysdate,'yyyy/mm/dd hh24:mi:ss'),#{bookNum},#{bookSu},#{bookPrice},#{usedPoint},#{showDay},#{showTime},#{bookState},#{seat},#{seat_num})
+</insert>
+
+<!-- 예매page에서 사용한 포인트 차감 -->
+<update id="updateSubPoint" parameterType="com.exe.ticketfactory.dto.TicketDTO">
+	update custom set userPoint=#{userPoint} where userId=#{userId}
+</update>
+
+<!-- 결제완료 후, 회원포인트 적립 -->
+<update id="updateSavePoint" parameterType="com.exe.ticketfactory.dto.TicketDTO">
+	update custom set userPoint=#{userPoint} where userId=#{userId}
+</update>
+
+<!-- 티켓주문 정상 완료시 넘어간 페이지에서 해당 티켓 불러오기 -->
+<select id="getReadSuccess" parameterType="String" resultType="com.exe.ticketfactory.dto.BookDTO">
+	select userId,showId,bookDate,bookNum,bookSu,bookPrice,usedPoint,showDay,showTime,bookState,seat,seat_num
+	from book where bookNum=#{bookNum}
+</select>
+
+<!-- 결제완료후, 무통장입금결제 버튼 눌렀을때 '미입금'상태를 결제완료로 변경 -->
+<update id="updatePayment" parameterType="com.exe.ticketfactory.dto.BookDTO">
+	update book set bookState=#{bookState} where bookNum=#{bookNum}
+</update>
+
+
+<!-- TimeTable에서 조건(showId,showDay,showTime)에 맞는 해당 정보 불러오기 -->
+<select id="getReadTimeTable" parameterType="com.exe.ticketfactory.dto.SeatDTO" resultType="com.exe.ticketfactory.dto.SeatDTO">
+	select showId,showTime,showDay,seat,showDate,seat1,seat2,seat3,seat4,seat5,seat6,seat7,seat8 
+	from timeTable where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</select>
+
+
+<!-- 조건(showId,showDay,showTime)에 맞는 해당 정보의 잔여좌석 차감 -->
+<update id="updateSeat1" parameterType="com.exe.ticketfactory.dto.SeatDTO">
+	update timeTable set seat1=#{seat1} where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</update>
+<update id="updateSeat2" parameterType="com.exe.ticketfactory.dto.SeatDTO">
+	update timeTable set seat2=#{seat2} where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</update>
+<update id="updateSeat3" parameterType="com.exe.ticketfactory.dto.SeatDTO">
+	update timeTable set seat3=#{seat3} where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</update>
+<update id="updateSeat4" parameterType="com.exe.ticketfactory.dto.SeatDTO">
+	update timeTable set seat4=#{seat4} where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</update>
+<update id="updateSeat5" parameterType="com.exe.ticketfactory.dto.SeatDTO">
+	update timeTable set seat5=#{seat5} where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</update>
+<update id="updateSeat6" parameterType="com.exe.ticketfactory.dto.SeatDTO">
+	update timeTable set seat6=#{seat6} where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</update>
+<update id="updateSeat7" parameterType="com.exe.ticketfactory.dto.SeatDTO">
+	update timeTable set seat7=#{seat7} where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</update>
+<update id="updateSeat8" parameterType="com.exe.ticketfactory.dto.SeatDTO">
+	update timeTable set seat8=#{seat8} where showId=#{showId} and showDate=#{showDate} and showTime=#{showTime}
+</update>
+
+
+<!-- 주간순위 Best10 불러오기 -->
+<select id="rankTen" resultType="com.exe.ticketfactory.dto.BookDTO">
+	select * from (select rownum rnum, data.* from
+	(select showId,count(*) from (select showId, bookDate from book <![CDATA[ where bookDate >= sysdate-7  )
+	group by showId order by count(*) desc) data)
+	where rnum>=1 and rnum<=9
+	]]>
+</select>
+
+<!-- 주간순위 Best10 데이터 SearchDTO에 집어넣음 -->
+<select id="rankList" parameterType="String" resultType="com.exe.ticketfactory.dto.SearchDTO">
+	select showId,showName,showPlace,showGenre, show.placeId, placeAddr, showPrice, showPoster, placeName from show, place
+	where show.placeId=place.placeId and showId=#{showId}
+</select>
+
+<!-- 해당 공연에 대한 place정보 불러오기 -->
+<select id="getReadPlace" parameterType="String" resultType="com.exe.ticketfactory.dto.PlaceDTO">
+	select placeId,placeName,placeOpen,placeSeat,placeTel,placeUrl,placeAddr,placeLa,placeLo,placeChar
+	from place where placeId=#{placeId}
+</select>
+
+<!-- 공연아이디값(placeId)으로 공연정보(show테이블) 불러들이기 -->
+<select id="showPlaceId" parameterType="String" resultType="com.exe.ticketfactory.dto.ShowDTO">
+	select showId,showName,placeId,showPlace,showPrice,showRuntime,showStory,showGenre,showPoster
+	from show where placeId=#{placeId}
+</select>
+
+
+
+<!-- 검색키워드로 데이터 뿌리기!!!!!! -->
+<select id="searchData" parameterType="hashMap" resultType="com.exe.ticketfactory.dto.SearchDTO">
+	select * from ( select rownum rnum, search.* from (
+	select showId,showName,showPlace,showGenre, show.placeId, placeAddr, showPrice, showPoster, placeName from show, place
+	where (placeAddr like '%' || #{search_word} || '%' or showName like '%' || #{search_word} || '%' 
+		or showGenre like '%' || #{search_word} || '%' or showPlace like '%' || #{search_word} || '%')
+		and show.placeId=place.placeId) search )
+	<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+	]]>		
+</select>
+
+<!-- 검색된 데이터의 총 갯수 -->
+<select id="getDataCount" parameterType="String" resultType="int">
+	select nvl(count(*),0) from show, place
+	where (placeAddr like '%' || #{search_word} || '%' or showName like '%' || #{search_word} || '%' 
+		or showGenre like '%' || #{search_word} || '%' or showPlace like '%' || #{search_word} || '%')
+		and show.placeId=place.placeId
+</select>
+
+
+
+<!-- 연극예매순 (예매된 연극들의 수량이 많을수록 상위) -->
+<select id="bookDescList" parameterType="hashMap" resultType="com.exe.ticketfactory.dto.BookDTO">
+	select * from (select rownum rnum, data.* from
+	(select showId,count(*) from (select showId, bookDate from book )
+	group by showId order by count(*) desc) data)
+	<![CDATA[ where rnum>=#{start} and rnum<=#{end} ]]>
+</select>
+
+<!-- group by showId로 묶고, 연극들의 갯수 -->
+<select id="bookDescCount" resultType="int">
+	select count(*) from (select nvl(count(*),0) from book group by showId)
+</select>
+
+
+
+<!-- 많이 구매한 회원순 -->
+<select id="cusDescList" parameterType="hashMap" resultType="com.exe.ticketfactory.dto.TicketDTO">
+	select * from (select rownum rnum, data.* from
+	(select userId,count(*) from (select userId from book )
+	group by userId order by count(*) desc) data)
+	<![CDATA[ where rnum>=#{start} and rnum<=#{end} ]]>
+</select>
+
+<!-- group by userId로 묶고, 연극 예매한적있는 회원들의 수 -->
+<select id="cusDescCount" resultType="int">
+	select count(*) from (select nvl(count(*),0) from book group by userId)
+</select>
+
+
+
+<!-- 모든 회원정보 불러오기 -->
+<select id="allCustomInfo" parameterType="hashMap" resultType="com.exe.ticketfactory.dto.TicketDTO">
+	select * from (select rownum rnum, data.* from
+	(select userId,userPwd,userName,userAddr_Num,userAddr,userAddr_Detail,userGender,userTel,userEmail,userFavor,userPoint
+	from custom) data)
+	<![CDATA[ where rnum>=#{start} and rnum<=#{end} ]]>
+</select>
+
+<!-- group by userId로 묶고, 총 회원들의 수 -->
+<select id="customCount" resultType="int">
+	select count(*) from custom
+</select>
+
+
+
+<!-- 회원들이 구매한 티켓들의 총 가격별로 전체 회원정보 불러오기 -->
+<select id="accruePrice" parameterType="hashMap" resultType="com.exe.ticketfactory.dto.BookDTO">
+	select * from (select rownum rnum, data.* from
+	(select userId, sum(bookPrice) bookPrice from book group by userId order by bookPrice desc) data)
+	<![CDATA[ where rnum>=#{start} and rnum<=#{end} ]]>
+</select>
+
+
+
+<!-- 별점 평균 내기 -->
+<select id="avgStar" resultType="com.exe.ticketfactory.dto.ReviewDTO">
+	select showId,avg(star) starAVG from review group by showId
+</select>
+
+
+
+
+<!-- 결제취소할 데이터들 불러오기 -->
+<select id="cancelList" parameterType="String" resultType="com.exe.ticketfactory.dto.BookDTO">
+	select userId,showId,bookDate,bookNum,bookSu,bookPrice,usedPoint,showDay,showTime,bookState,seat,seat_num 
+	from book where bookNum like #{bookNum} || '%'
+</select>
+
+<!-- 결제취소하기 -->
+<delete id="deleteBook" parameterType="String">
+	delete book where bookNum like #{bookNum} || '%'
+</delete>
+
+<!-- 취소할거 데이터 하나만 불러오기 -->
+<select id="cancelData" parameterType="String" resultType="com.exe.ticketfactory.dto.BookDTO">
+	select * from (select rownum rnum, data.* from
+	(select userId,showId,bookDate,bookNum,bookSu,bookPrice,usedPoint,showDay,showTime,bookState,seat,seat_num
+	from book where bookNum like #{bookNum} || '%' ) data) where rnum=1
+</select>
+
+
+
+</mapper>

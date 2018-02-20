@@ -1,0 +1,138 @@
+@CHARSET "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* 기본 초기화 상태 */
+*{margin:0; padding:0;}
+/* html,body{ height: 100%; width: 100%;} */
+body{background-color : #EAEAEA; font-size: 12px; font-family:나눔고딕,Nanum Gothic,Dotum,돋움,Helvetica;}
+html { overflow-y: scroll; overflow-x: hidden; }
+/* 모든 링크에 밑줄제거 */
+a{text-decoration: none;} 
+
+
+
+/* 상단메뉴바 */
+#top_menu {
+	height: 22px;
+	width: 100%;
+ 	border: 1px solid #D5D5D5;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	margin: auto;
+	text-align: center;
+	background-color: #ffffff;
+}
+#top_menu ul li {
+	background-color: white;
+	vertical-align: middle;
+	text-align: center;
+}
+#top_menu li{
+	display: inline;
+	padding-right: 110px;
+}
+#top_menu ul{
+	position: absolute;
+}
+#top_menu .menu_link{
+	text-decoration: none;
+	color: #313131;
+	width: 200px;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: 맑은 고딕;
+}
+#top_menu .menu_link:HOVER {
+	color: #747474;
+}
+#top_menu .menu_link_pink{
+	text-decoration: none;
+	color: #FF007F;
+	width: 200px;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: 맑은 고딕;
+}
+#top_menu .menu_link_pink:HOVER {
+	color: #FF3399;
+}
+
+/* 슬라이드 부분 */
+#wrap {
+	display: inline-table;
+	position: relative;
+	width: 100%;
+	background: #eeeeee;
+	height: 410px;
+
+}
+
+#wrap_in{
+	width: 1010px;
+	height: 445px;
+	margin: auto;
+	
+}
+
+#main_bn {
+	float:left;
+	width: 900px;
+	height: 500px;
+
+}
+#main_bn2{
+	float: left;
+	width: 300px;
+	height: 410px;
+	margin: 30px 0px 0px 5px;
+}
+
+#main_side{
+	margin: auto;
+	width: 300px;
+	height: 205px;
+
+}
+
+#main_bn img {
+	width: auto;
+	height: auto;
+	padding-top: 30px;
+}
+
+#main_bn_btn {
+	width: 800px;
+	padding-left: 280px;
+	list-style-type: none;
+	position: absolute;
+	bottom: 10px;
+	left: 5px;
+}
+
+#main_bn_btn li {
+	float: left;
+	padding: 10px 2px;
+	margin-right: 5px;
+}
+
+a, a:hover, a:visited {
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+.circle1 {                                 
+  width: 35px;                               
+  height: 30px;                             
+  background: #5F00FF;                            
+  border-radius: 50%; 
+  font-family: 맑은 고딕;
+  color: white;
+  font-weight: bold; 
+  font-size: 15px;
+  text-align: center;  
+  vertical-align: middle;
+  padding-top: 7px;                 
+}

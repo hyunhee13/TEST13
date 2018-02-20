@@ -1,0 +1,140 @@
+@CHARSET "UTF-8";
+
+/* 기본 초기화 상태 */
+body{
+	
+	padding: 0;
+	margin: 0;
+	background-color : #EAEAEA !important;
+	font-size: 10pt !important;
+	font-family:나눔고딕,Nanum Gothic,Dotum,돋움,Helvetica !important;
+}
+
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: content-box !important; 
+}
+
+
+/* 모든 링크에 밑줄제거 */
+a{
+	text-decoration: none !important;
+}
+
+/* 주소 입력창부분 */
+#address_dis{
+	
+	width: 250pt;
+	
+}
+/* input부분 초기화 */
+ input[type=text]{
+	/* color : #BDBDBD; */
+	 width: 80pt ; 
+	 padding: 4px ;	
+} 
+
+
+/* 체크박스 */
+.checkBox{
+	vertical-align:middle; height:18px; width:18px; 
+	box-shadow: purple;
+	
+} 
+
+/* 특정컬러지정  */
+.pink{
+	color: #FF007F;
+}
+
+.btn1{
+	
+	font-size : 14px;
+	font-style : bold;
+	border-radius: 10px;
+	width : 100px;
+	height : 50px;
+	background-color: purple;
+	color: white;
+	
+}
+
+
+
+
+
+
+/* header부분 */
+/* #top_wrap { width:100%; margin:auto; background:#313131; height:130px; }
+#top_gnb_wrap { border-bottom:1px solid #454545;   }
+#top_gnb_area { width:980px; margin:auto; height:30px; position:relative; }
+#top_gnb_box { position:absolute; right:0px; }
+#top_logo_wrap {width:980px; margin:auto; height:70px; margin-top:12px; }
+#top_gnb { margin: 0; padding: 0; }
+#top_gnb li { float: left; list-style: none; font-size:11px; border-bottom:1px solid #454545; line-height:14px;}
+#top_gnb li a { display: block; text-align:center; 	background: #313131; padding: 8px 9px; border-left: 1px solid #454545; width: 75px; color: #fff; white-space: nowrap; }
+#top_gnb li a:hover { background: #444; }
+#top_gnb li ul { margin: 0; padding: 0; position: absolute; visibility: hidden; }
+#top_gnb li ul li { float: none; display: inline; }
+#top_gnb li ul li a { width: 75px; font-size:11px; background: #313131; color: #fff; padding:8px 9px 8px 9px; }
+#top_gnb li ul li a:hover { background: #444;  }
+.top_gnb_pri {border-right:1px solid #454545; }
+.top_gnb_arrow {font-size:9px; margin-left:3px; vertical-align:top; }
+.top_gnb_sub {border-right:1px solid #454545; border-bottom:1px solid #454545;}
+.top_gnb_logoImage{cursor:pointer; float:left;}
+모달부분
+.login_modal{
+	height: 40px;
+	padding-left: 5px;
+	width: 100%;
+	margin: 10px auto;
+	
+} */
+
+
+
+
+
+
+/* 검색창 */
+.search_box {font-size:13px; height:32px; /* line-height:2.4em; */vertical-align:top; 
+border-left:0px; border-right:0px; border-top:0px solid #fff; border-bottom:0px solid #fff; 
+width:400px; color:#000; float: left; padding: 0px !important;}
+.search_image{float: left;}
+
+
+/* session 부분  */
+#session {width: 643px; height: 850px;   margin: 50px auto; background-color: white;}
+#session > table{border: 1px solid #dedede; margin: 10px auto; width: 600px;}
+#session tr > td:FIRST-CHILD {
+	color : #313131;
+	font-size : 10pt;
+	background-color: #f9f9f9; height: 40px; 
+	border-right:1px solid #dedede; }
+#session tr > td:LAST-CHILD {padding-left: 10px}
+#session td{border-bottom: 1px solid #dedede; margin: 0 0; padding-left: 20px}
+#session td > input{ border: 1 solid #BDBDBD;}
+.radio_text{
+	font-size: 10pt;
+	color: #313131;
+	margin: 5px auto;
+	font-weight: solid;
+}
+.pwd_checker{
+	
+	font-size: 10pt;
+	color: #313131;
+	
+}
+
+
+/* footer 부분 */
+#footer {clear:both; padding-top:0px; }
+#footer_1 {height:48px; background-color:#292929;}
+#footer_menu {width:980px; height:50px; margin:0 auto;}
+#footer_menu ul {width:980px; list-style: none; margin-left:120px; padding-top:2px;}
+#footer_menu li {float:left; padding:15px 30px; font-size:12px; font-weight:400; color:#fff; }
+#footer_menu li:hover {color:#FF007F; }
+#footer_2 {height:120px; background-color:#313131;}
+#footer_copyright {width:980px; margin:0 auto; padding-top:10px; }
